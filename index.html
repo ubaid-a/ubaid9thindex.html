@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9Th C - Punjab Textbooks & Notes (2026-2027) | Designed by UBAID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: #111827;
+            --card-border: #1f293d;
+            --accent-glow: #00f2fe;
+            --accent-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            --purple-gradient: linear-gradient(135deg, #7F00FF 0%, #E100FF 100%);
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+            --admin-gold: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar Clock & Announcement */
+        .top-ticker {
+            background: rgba(17, 24, 39, 0.9);
+            border-bottom: 1px solid var(--card-border);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ticker-item i {
+            color: #00c6ff;
+        }
+
+        /* Header */
+        header {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-badge {
+            background: var(--accent-gradient);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .author-tag {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-tag strong {
+            color: #00f2fe;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3.5rem 1rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 114, 255, 0.12) 0%, rgba(9, 13, 22, 0) 70%);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Exam Countdown Widget */
+        .exam-timer-card {
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid var(--card-border);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .timer-unit {
+            text-align: center;
+        }
+
+        .timer-unit .val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #00f2fe;
+        }
+
+        .timer-unit .lbl {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            text-transform: uppercase;
+        }
+
+        /* Controls / Search / Admin bar */
+        .controls-wrapper {
+            max-width: 1000px;
+            margin: 0 auto 2.5rem;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .search-admin-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-sub);
+        }
+
+        .btn-admin-login {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: var(--admin-gold);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-admin-login:hover {
+            background: var(--admin-gold);
+            color: #000;
+        }
+
+        .btn-add-subject {
+            display: none;
+            background: var(--purple-gradient);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+            align-items: center;
+            gap: 8px;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(225, 0, 255, 0.4); }
+            100% { box-shadow: 0 0 20px rgba(225, 0, 255, 0.8); }
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pill {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-sub);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pill.active, .pill:hover {
+            background: var(--accent-gradient);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        /* Grid & Animations */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            width: 100%;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.8rem;
+        }
+
+        /* Smooth Card entrance animation */
+        @keyframes cardPopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.85) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            animation: cardPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(0, 198, 255, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 198, 255, 0.25);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(0, 198, 255, 0.08);
+            border: 1px solid rgba(0, 198, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #00f2fe;
+            transition: 0.3s;
+        }
+
+        .card:hover .icon-box {
+            transform: rotate(5deg) scale(1.1);
+            background: var(--accent-gradient);
+            color: #fff;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-sub {
+            font-size: 0.82rem;
+            color: var(--text-sub);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            background: var(--accent-gradient);
+            color: #fff;
+            text-decoration: none;
+            padding: 11px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .card-btn:hover {
+            opacity: 0.92;
+        }
+
+        .delete-btn {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* Modal Overlay & Animation */
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 460px;
+            width: 100%;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out forwards;
+        }
+
+        .modal-box h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: #00f2fe;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: #090d16;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px; right: 20px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background: var(--card-bg);
+            border-top: 1px solid var(--card-border);
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: #00f2fe;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Ticker -->
+    <div class="top-ticker">
+        <div class="ticker-item">
+            <i class="fa-regular fa-clock"></i> <span id="liveClock">Loading time...</span>
+        </div>
+        <div class="ticker-item">
+            <i class="fa-solid fa-bullhorn"></i> Session 2026–2027 Punjab Board Official Curriculum
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap" style="color: #00f2fe;"></i> 9Th C <span class="logo-badge">PCTB</span>
+        </div>
+        <div class="author-tag">
+            Designed by <strong>UBAID</strong>
+        </div>
+    </header>
+
+    <!-- Hero Area -->
+    <section class="hero">
+        <h1>Class 9th <span>Textbooks & Notes</span></h1>
+        <p>Your official gateway to 9th Class PCTB books, study resources, and syllabus updates.</p>
+
+        <!-- Dynamic Exam Countdown -->
+        <div class="exam-timer-card">
+            <div class="timer-unit"><div class="val" id="days">00</div><div class="lbl">Days</div></div>
+            <div class="timer-unit"><div class="val" id="hours">00</div><div class="lbl">Hours</div></div>
+            <div class="timer-unit"><div class="val" id="mins">00</div><div class="lbl">Mins</div></div>
+            <div class="timer-unit"><div class="val" id="secs">00</div><div class="lbl">Secs</div></div>
+        </div>
+    </section>
+
+    <!-- Controls -->
+    <div class="controls-wrapper">
+        <div class="search-admin-row">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search any book or subject..." onkeyup="renderGrid()">
+            </div>
+            <button class="btn-admin-login" id="adminBtn" onclick="toggleAdmin()">
+                <i class="fa-solid fa-lock"></i> Admin Login
+            </button>
+            <button class="btn-add-subject" id="addBtn" onclick="openAddModal()">
+                <i class="fa-solid fa-plus"></i> Add Subject
+            </button>
+        </div>
+
+        <div class="filter-pills">
+            <button class="pill active" onclick="setFilter('all', this)">All Subjects</button>
+            <button class="pill" onclick="setFilter('science', this)">Science Group</button>
+            <button class="pill" onclick="setFilter('compulsory', this)">Compulsory</button>
+            <button class="pill" onclick="setFilter('arts', this)">Arts / General</button>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="container">
+        <div class="books-grid" id="booksGrid">
+            <!-- Dynamic Content Injected Here -->
+        </div>
+    </main>
+
+    <!-- Add Subject Modal (Admin Panel) -->
+    <div class="modal" id="addModal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeAddModal()">&times;</span>
+            <h2>Add New Subject / Topic</h2>
+            <div class="form-group">
+                <label>Subject Title</label>
+                <input type="text" id="newTitle" placeholder="e.g. Tarjuma-tul-Quran">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="newCat">
+                    <option value="science">Science Group</option>
+                    <option value="compulsory">Compulsory</option>
+                    <option value="arts">Arts / General</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Icon FontAwesome Class</label>
+                <input type="text" id="newIcon" placeholder="e.g. fa-book (or leave default)">
+            </div>
+            <div class="form-group">
+                <label>Resource / PDF Link</label>
+                <input type="text" id="newLink" placeholder="https://pctb.punjab.gov.pk/e-books">
+            </div>
+            <button class="card-btn" onclick="saveNewSubject()">Publish Subject</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Powered by <strong>9Th C Portal</strong> • Designed by <strong>UBAID</strong></p>
+        <p style="font-size: 0.78rem; color: #6b7280; margin-top: 6px;">Punjab Curriculum & Textbook Board (2026-2027 Session)</p>
+    </footer>
+
+    <script>
+        // Initial Default Subject Data
+        const defaultBooks = [
+            { id: 1, title: "Mathematics", category: "science", icon: "fa-calculator", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 2, title: "Physics", category: "science", icon: "fa-atom", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 3, title: "Chemistry", category: "science", icon: "fa-flask", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 4, title: "Biology", category: "science", icon: "fa-dna", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 5, title: "Computer Science", category: "science", icon: "fa-laptop-code", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 6, title: "English Language", category: "compulsory", icon: "fa-book-open", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 7, title: "Urdu (اردو)", category: "compulsory", icon: "fa-pen-nib", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 8, title: "Islamiat Lazmi", category: "compulsory", icon: "fa-mosque", link: "https://pctb.punjab.gov.pk/e-books" },
+            { id: 9, title: "Pakistan Studies", category: "compulsory", icon: "fa-flag", link: "https://pctb.punjab.gov.pk/e-books" }
+        ];
+
+        let books = JSON.parse(localStorage.getItem('ubaid_books')) || defaultBooks;
+        let isAdmin = localStorage.getItem('ubaid_admin_logged') === 'true';
+        let activeFilter = 'all';
+
+        // Clock Function
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('liveClock').innerText = now.toLocaleString('en-US', { 
+                weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' 
+            });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Countdown Timer to Board Exams (April 2027)
+        function updateExamTimer() {
+            const examDate = new Date('April 1, 2027 09:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = examDate - now;
+
+            if(diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 
